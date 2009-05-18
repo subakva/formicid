@@ -1,0 +1,57 @@
+/*
+ * Copyright 2007 Jason Wadsworth
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+------------------------------------------------
+Project Structure
+------------------------------------------------
+ROOT
+ - bin : contains scripts for building and executing Formicid
+ - build : contains any and all build products
+ - lib : contains any and all third-party libraries
+ - licenses : contains all licenses for third-party libraries
+ - src : contains all source code
+   - java : contains all Java source code
+   - js : contains all JavaScript source code
+ - test : contains all tests and supporting files
+   - java : contains all Java unit tests
+   - js : contains all JavaScript unit tests
+ - bootstrap.xml : an Ant build file for the initial compilation of Formicid
+ - build.js : a Formicd build file for Formicid
+ - HEADER : the copyright notice that must be at the top of every source file
+ - LICENSE : contains a copy of the Apache 2.0 license
+ - NOTICE : contains attribution notices for all included code
+ - README : this file
+ - VERSIONS : lists the versions of third-party libraries
+
+------------------------------------------------
+Bootstrap Build
+------------------------------------------------
+
+Most of Formicid's build process is defined in a Formicid build file, but in order to execute it, you need to compile Formicid once. bootstrap.xml in the project root folder is an Ant build script to compile Formicid into the build/classes directory.
+
+$ ./bin/bootstrap.sh
+ - or -
+C:\> bin/bootstrap.bat
+
+------------------------------------------------
+Running the Formicid Build
+------------------------------------------------
+
+Once the project has been built once, the Formicid build file, build.js can be executed by running the script in the bin directory.
+
+$ ./bin/formicid.sh
+ - or -
+C:\> bin/formicid.bat

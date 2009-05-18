@@ -1,0 +1,56 @@
+<!--
+/*
+ * Copyright 2007 Jason Wadsworth
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+-->
+<project basedir="." name="formicid" default="compile">
+
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+
+	<property name="lib.dir" value="lib" />
+	<property name="src.dir" value="src" />
+	<property name="src.java.dir" value="${src.dir}/java" />
+	<property name="src.js.dir" value="${src.dir}/js" />
+
+	<property name="ant.lib.dir" value="${lib.dir}/ant/lib" />
+
+	<path id="compile.classpath">
+		<pathelement location="${ant.lib.dir}/ant.jar"/>
+		<pathelement location="${ant.lib.dir}/ant-launcher.jar"/>
+		<pathelement location="${lib.dir}/js.jar"/>
+		<pathelement location="${lib.dir}/commons-beanutils.jar"/>
+		<pathelement location="${lib.dir}/commons-cli.jar"/>
+		<pathelement location="${lib.dir}/commons-collections.jar"/>
+		<pathelement location="${lib.dir}/commons-logging.jar"/>
+	</path>
+
+	<target name="init" description="--> Creates transient directories.">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${classes.dir}"/>
+	</target>
+
+    <target name="clean" description="--> Removes all build artifacts.">
+        <delete dir="${build.dir}" />
+    </target>
+
+	<target name="compile" depends="init" description="--> Compiles java classes.">
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" classpathref="compile.classpath" debug="on" />
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.js.dir}" includes="**/*" />
+		</copy>
+	</target>
+
+</project>
